@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cc -O -Wall -Wextra  "$1"
+
