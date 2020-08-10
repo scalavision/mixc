@@ -30,8 +30,52 @@ void array_sv_ptr() {
 
 }
 
+void looping_through_string_ptr() {
+  char *verse = "hello world";
+
+  printf("first char: %c\n", *verse);
+  while (*verse != '\0')
+    printf("%c\n", *verse++);
+}
+
+void length(char *ptr, int *counter){
+  // increase the value that counter is pointing to
+  while (*ptr++ != '\0') (*counter)++;  
+}
+
+void add(int value, int *accum){
+  *accum = *accum + value;
+}
+
+void calc_length(){
+  // declare the pointer, 
+  // this allocates memory to hold a pointer of type Int
+  int * counterPtr;
+  // declare a value of type int
+  // this will allocate memory on the stack for an int
+  int counter = 0;
+  // we make our pointer point to the stack allocated int
+  // of value 0
+  // we could have skipped the counter int if we directly allocated
+  // this memory on the stack for the pointer directly
+  counterPtr = &counter;
+
+  printf("calc len\n");
+  length("hello world\n", counterPtr);
+  printf("length: %d\n\n", *counterPtr);
+  printf("adding 10 to the length\n");
+  add(10, counterPtr);
+  printf("length added 10: %d\n", *counterPtr);
+}
+
 void ptr_arithmetic(){
-  TODO
+  char *words = "hello world\n";
+  printf("h: %c\n", words[0]);
+  printf("e: %c\n", *(words + 1));
+  printf("l: %c\n", *(words + 2));
+  printf("o: %c\n", *(&words[4]));
+  //TODO
+
 }
 
 void playing_with_pointers() {
@@ -58,6 +102,10 @@ void playing_with_pointers() {
 }
 
 int main(){
-  array_sv_ptr();
+//  looping_through_string_ptr();
+  // playing_with_pointers();
+//  calc_length(); 
+  ptr_arithmetic();
+  //array_sv_ptr();
   return 0;
 }
