@@ -32,6 +32,26 @@ double squareValues(int n){
   return n * n;
 }
 
+
+double integral(double x, double y, int i, double (*fp)(double)){
+
+  double h, sum;
+  h = (y - x) / i;
+  sum = ( (*fp)(x) + (*fp)(y) ) / 2.0;
+
+  int j;
+  for(j = 1; j < i; j++) {
+    sum += (*fp)(x + j * h);
+  }
+
+  return h * sum;
+
+}
+
+double quad(double x) {
+  return x*x + 2.0 * x + 4.0;
+}
+
 int main(){
 
   printf("reciproc values:\n");
@@ -40,6 +60,10 @@ int main(){
   printf("squared values:\n");
   generateValues(1,10, squareValues);
 
+
+  printf("trapezoidal rule ");
+  double result = integral(1,4,20, quad);
+  printf("result: %f", result);
   return 0;
 
 }
